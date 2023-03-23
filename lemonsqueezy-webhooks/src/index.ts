@@ -9,7 +9,7 @@ export async function nodejsWebHookHandler<CustomData = any>({
     req,
     res,
     onData,
-    onError,
+    onError = console.error,
 }: {
     secret: string
     req: IncomingMessage
@@ -22,7 +22,11 @@ export async function nodejsWebHookHandler<CustomData = any>({
     if (req.method !== 'POST') {
         // you can see whether a webhook delivers successfully in your Lemon Squeezy account
         // -> Settings -> Webhooks -> Recent deliveries
-        console.log('Method not allowed', req.method)
+        await onError(
+            new Error(
+                'Method not allowed for lemonsqueezy webhook ' + req.method,
+            ),
+        )
         return res
             .writeHead(405, { 'Content-Type': 'application/json' })
             .end(JSON.stringify({ message: 'Method not allowed' }))
@@ -39,7 +43,7 @@ export async function nodejsWebHookHandler<CustomData = any>({
         )
 
         if (!crypto.timingSafeEqual(digest, signature)) {
-            console.log('Invalid signature.')
+            await onError(new Error('Invalid signature.'))
             return res
                 .writeHead(401, { 'Content-Type': 'application/json' })
                 .end(JSON.stringify({ message: 'Invalid signature.' }))
@@ -55,9 +59,7 @@ export async function nodejsWebHookHandler<CustomData = any>({
             JSON.stringify({ message: 'Webhook received' }),
         )
     } catch (e: any) {
-        if (onError) {
-            await onError(e)
-        }
+        await onError(e)
         return res
             .writeHead(400, { 'Content-Type': 'application/json' })
             .end(JSON.stringify({ message: `Webhook error: ${e}` }))
