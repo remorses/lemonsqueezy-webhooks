@@ -20,7 +20,7 @@ export default async function handler(
 ) {
     await nodejsWebHookHandler({
         onData(payload) {
-            console.log(payload)
+            console.log(JSON.stringify(payload, null, 2))
 
             if (
                 payload.event_name === 'order_created' ||
