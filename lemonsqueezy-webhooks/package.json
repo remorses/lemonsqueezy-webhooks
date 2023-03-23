@@ -6,12 +6,13 @@
     "module": "esm/index.js",
     "types": "dist/index.d.ts",
     "scripts": {
-        "build": "FORCE_COLOR=1 tsc && tsc -m es6 --outDir esm",
+        "build": "FORCE_COLOR=1 tsc && tsc -m es6 --outDir esm && cp ../README.md ./README.md",
         "watch": "tsc -w"
     },
     "files": [
         "dist",
         "src",
+        "README.md",
         "esm"
     ],
     "keywords": [
