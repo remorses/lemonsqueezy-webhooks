@@ -11,7 +11,9 @@ This package exposes the lemon-squeezy webhooks types and an utility functions t
 ## Usage in Node.js
 
 ```ts
-const secret = process.env.LEMON_SQUEEZY_WEBHOOK_SECRET!
+import { nodejsWebHookHandler } from 'lemonsqueezy-webhooks'
+
+const secret = process.env.LEMON_SQUEEZY_WEBHOOK_SECRET
 
 // ... Express app setup
 
@@ -48,7 +50,7 @@ export const config = {
     },
 }
 
-const secret = process.env.SECRET!
+const secret = process.env.SECRET
 
 if (!secret) {
     throw new Error('SECRET is not set')
