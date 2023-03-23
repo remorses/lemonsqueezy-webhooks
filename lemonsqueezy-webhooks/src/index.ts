@@ -9,11 +9,13 @@ export async function nodejsWebHookHandler<CustomData = any>({
     req,
     res,
     onData,
+    onError,
 }: {
     secret: string
     req: IncomingMessage
     onData: (data: DiscriminatedWebhookPayload<CustomData>) => any
     res: ServerResponse
+    onError?: (error: Error) => any
 }) {
     const signingSecret = secret
 
@@ -53,6 +55,9 @@ export async function nodejsWebHookHandler<CustomData = any>({
             JSON.stringify({ message: 'Webhook received' }),
         )
     } catch (e: any) {
+        if (onError) {
+            await onError(e)
+        }
         return res
             .writeHead(400, { 'Content-Type': 'application/json' })
             .end(JSON.stringify({ message: `Webhook error: ${e}` }))
