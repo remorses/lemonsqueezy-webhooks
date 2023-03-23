@@ -21,7 +21,7 @@
         "webhooks"
     ],
     "author": "Tommaso De Rossi, morse <beats.by.morse@gmail.com>",
-    "license": "ISC",
+    "license": "MIT",
     "devDependencies": {
         "@types/node": "18.15.5"
     }
