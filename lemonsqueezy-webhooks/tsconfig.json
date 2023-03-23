@@ -13,12 +13,15 @@
         "declaration": true,
         "outDir": "dist",
         "declarationMap": true,
+        "rootDir": "src",
         "strict": true,
         "downlevelIteration": true,
         "esModuleInterop": true,
         "noImplicitAny": false,
         "sourceMap": true,
+
         "jsx": "react-jsx",
         "skipLibCheck": true
-    }
+    },
+    "include": ["src"]
 }
