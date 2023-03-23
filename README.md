@@ -4,19 +4,9 @@
 npm i lemonsqueezy-webhooks
 ```
 
+## Usage
+
 This package exposes the lemon-squeezy webhooks types and an utility functions to handle webhooks in Node.js
-
-Exported types:
-
--   `WebhookPayload`, the lemonsqueezy json body of a webhook
--   `Order`, the `payload.data` type for the events `order_created`, `order_updated`, `order_deleted`
--   `Subscription`, the `payload.data` type for the events `subscription_created`, `subscription_cancelled`, `subscription_resumed`, `subscription_expired`, `subscription_paused`, `subscription_unpaused`
--   `SubscriptionInvoice`, the `payload.data` type for the events `subscription_payment_success`, `subscription_payment_failed`, `subscription_payment_recovered`
--   `LicenseKey`, the `payload.data` type for the events `license_key_created`
-
-Exported functions
-
--   `nodejsWebHookHandler`, it handles webhooks signature check and parsing. It also adds a top level `event_name` field to the payload to make [Typescript discriminated unions](https://www.typescriptlang.org/docs/handbook/unions-and-intersections.html#discriminating-unions) work and infer the payload.data type under if blocks inside `onData`.
 
 ## Usage in Node.js
 
@@ -82,3 +72,28 @@ export default async function handler(
     })
 }
 ```
+
+Exported types:
+
+-   `WebhookPayload`, the lemonsqueezy json body of a webhook
+-   `Order`, the `payload.data` type for the events
+    -   `order_created`
+    -   `order_updated`
+    -   `order_deleted`
+-   `Subscription`, the `payload.data` type for the events
+    -   `subscription_created`
+    -   `subscription_cancelled`
+    -   `subscription_resumed`
+    -   `subscription_expired`
+    -   `subscription_paused`
+    -   `subscription_unpaused`
+-   `SubscriptionInvoice`, the `payload.data` type for the events
+    -   `subscription_payment_success`
+    -   `subscription_payment_failed`
+    -   `subscription_payment_recovered`
+-   `LicenseKey`, the `payload.data` type for the events
+    -   `license_key_created`
+
+Exported functions
+
+-   `nodejsWebHookHandler`, it handles webhooks signature check and parsing. It also adds a top level `event_name` field to the payload to make [Typescript discriminated unions](https://www.typescriptlang.org/docs/handbook/unions-and-intersections.html#discriminating-unions) work and infer the payload.data type under if blocks inside `onData`.
