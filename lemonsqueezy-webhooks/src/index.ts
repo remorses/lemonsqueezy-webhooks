@@ -43,7 +43,7 @@ export async function nodejsWebHookHandler<CustomData = any>({
         )
 
         if (!crypto.timingSafeEqual(digest, signature)) {
-            await onError(new Error('Invalid signature.'))
+            await onError(new Error('Invalid lemonsqueezy signature.'))
             return res
                 .writeHead(401, { 'Content-Type': 'application/json' })
                 .end(JSON.stringify({ message: 'Invalid signature.' }))
