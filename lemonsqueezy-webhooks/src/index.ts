@@ -4,7 +4,7 @@ import type { Readable } from 'stream'
 import type { IncomingMessage, ServerResponse } from 'http'
 import { DiscriminatedWebhookPayload, WebhookPayload } from './types'
 
-export async function nodejsWebHookHandler({
+export async function nodejsWebHookHandler<CustomData = any>({
     secret,
     req,
     res,
@@ -12,7 +12,7 @@ export async function nodejsWebHookHandler({
 }: {
     secret: string
     req: IncomingMessage
-    onData: (data: DiscriminatedWebhookPayload) => any
+    onData: (data: DiscriminatedWebhookPayload<CustomData>) => any
     res: ServerResponse
 }) {
     const signingSecret = secret
