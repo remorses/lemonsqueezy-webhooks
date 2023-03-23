@@ -4,7 +4,7 @@
 npm i lemonsqueezy-webhooks
 ```
 
-This package exposes the Lemon-squeezy webhooks types and an utility function to handle webhooks in Node.js
+This package exposes the lemon-squeezy webhooks types and an utility functions to handle webhooks in Node.js
 
 Exported types:
 

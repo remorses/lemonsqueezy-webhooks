@@ -1,7 +1,7 @@
 {
     "name": "lemonsqueezy-webhooks",
     "version": "0.0.0",
-    "description": "",
+    "description": "lemon-squeezy webhooks types and an utility functions to handle webhooks in Node.js",
     "main": "dist/index.js",
     "module": "esm/index.js",
     "types": "dist/index.d.ts",
@@ -14,7 +14,11 @@
         "src",
         "esm"
     ],
-    "keywords": [],
+    "keywords": [
+        "lemon-squeezy",
+        "lemonsqueezy",
+        "webhooks"
+    ],
     "author": "Tommaso De Rossi, morse <beats.by.morse@gmail.com>",
     "license": "ISC",
     "devDependencies": {
