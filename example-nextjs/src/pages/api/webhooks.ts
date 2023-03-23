@@ -8,10 +8,10 @@ export const config = {
     },
 }
 
-const secret = process.env.LEMON_SQUEEZY_WEBHOOK_SECRET!
+const secret = process.env.SECRET!
 
 if (!secret) {
-    throw new Error('LEMON_SQUEEZY_WEBHOOK_SECRET is not set')
+    throw new Error('SECRET is not set')
 }
 
 export default async function handler(

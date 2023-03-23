@@ -27,7 +27,7 @@ export type HookData<CustomData = any> = {
     data: Subscription | SubscriptionInvoice | Order | LicenseKey
 }
 
-// augmented type to make Typescript discriminated unions work: https://www.typescriptlang.org/docs/handbook/unions-and-intersections.html#discriminating-unions
+// augmented type to make TypeScript discriminated unions work: https://www.typescriptlang.org/docs/handbook/unions-and-intersections.html#discriminating-unions
 export type DiscriminatedHookData<CustomData = any> =
     | {
           event_name: SubscriptionEventNames
