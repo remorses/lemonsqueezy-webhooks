@@ -1,5 +1,4 @@
 export * from './types'
-import crypto from 'crypto'
 import type { Readable } from 'stream'
 import type { IncomingMessage, ServerResponse } from 'http'
 import { DiscriminatedWebhookPayload, WebhookPayload } from './types'
@@ -16,6 +15,7 @@ export async function nodejsWebHookHandler({
     res: ServerResponse
 }) {
     const signingSecret = secret
+    const crypto = await import('crypto')
 
     if (req.method !== 'POST') {
         // you can see whether a webhook delivers successfully in your Lemon Squeezy account
