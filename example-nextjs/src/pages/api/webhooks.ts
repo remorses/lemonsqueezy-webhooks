@@ -19,7 +19,7 @@ export default async function handler(
     res: NextApiResponse,
 ) {
     await nodejsWebHookHandler({
-        onData(payload) {
+        async onData(payload) {
             console.log(JSON.stringify(payload, null, 2))
 
             if (

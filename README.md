@@ -17,7 +17,7 @@ const secret = process.env.LEMON_SQUEEZY_WEBHOOK_SECRET!
 
 app.post('/webhooks', async (req, res) => {
     await nodejsWebHookHandler({
-        onData(payload) {
+        async onData(payload) {
             console.log(payload)
             // payload.event_name allows TypeScript to infer the type of payload.data
             if (payload.event_name === 'order_created') {
@@ -59,7 +59,7 @@ export default async function handler(
     res: NextApiResponse,
 ) {
     await nodejsWebHookHandler({
-        onData(payload) {
+        async onData(payload) {
             console.log(payload)
             if (payload.event_name === 'order_created') {
                 // payload.data is an Order
