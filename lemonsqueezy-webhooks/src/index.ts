@@ -4,14 +4,6 @@ import type { Readable } from 'stream'
 import type { IncomingMessage, ServerResponse } from 'http'
 import { DiscriminatedWebhookPayload, WebhookPayload } from './types'
 
-async function buffer(readable: Readable) {
-    const chunks: any[] = []
-    for await (const chunk of readable) {
-        chunks.push(typeof chunk === 'string' ? Buffer.from(chunk) : chunk)
-    }
-    return Buffer.concat(chunks)
-}
-
 export async function nodejsWebHookHandler({
     secret,
     req,
@@ -65,4 +57,12 @@ export async function nodejsWebHookHandler({
             .writeHead(400, { 'Content-Type': 'application/json' })
             .end(JSON.stringify({ message: `Webhook error: ${e}` }))
     }
+}
+
+async function buffer(readable: Readable) {
+    const chunks: any[] = []
+    for await (const chunk of readable) {
+        chunks.push(typeof chunk === 'string' ? Buffer.from(chunk) : chunk)
+    }
+    return Buffer.concat(chunks)
 }
