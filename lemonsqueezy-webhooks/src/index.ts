@@ -1,7 +1,7 @@
 export * from './types'
 import crypto from 'crypto'
-import { Readable } from 'stream'
-import { IncomingMessage, OutgoingMessage, ServerResponse } from 'http'
+import type { Readable } from 'stream'
+import type { IncomingMessage, ServerResponse } from 'http'
 import { DiscriminatedWebhookPayload, WebhookPayload } from './types'
 
 async function buffer(readable: Readable) {
