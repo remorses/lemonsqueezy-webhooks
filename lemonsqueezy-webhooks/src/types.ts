@@ -15,7 +15,7 @@ type OrderEventNames = 'order_created' | 'order_refunded'
 
 type LicenseKeyEventNames = 'license_key_created'
 
-export type HookData<CustomData = any> = {
+export type WebhookPayload<CustomData = any> = {
     meta: {
         event_name:
             | SubscriptionEventNames
@@ -28,7 +28,7 @@ export type HookData<CustomData = any> = {
 }
 
 // augmented type to make TypeScript discriminated unions work: https://www.typescriptlang.org/docs/handbook/unions-and-intersections.html#discriminating-unions
-export type DiscriminatedHookData<CustomData = any> =
+export type DiscriminatedWebhookPayload<CustomData = any> =
     | {
           event_name: SubscriptionEventNames
           meta: {
@@ -57,7 +57,7 @@ export type DiscriminatedHookData<CustomData = any> =
           data: LicenseKey
       }
 
-export type EventName = HookData['meta']['event_name']
+export type EventName = WebhookPayload['meta']['event_name']
 
 export type SubscriptionInvoice = {
     type: 'subscription-invoices'

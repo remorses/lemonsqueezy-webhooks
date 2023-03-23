@@ -8,11 +8,15 @@ This package exposes the Lemon-squeezy webhooks types and an utility function to
 
 Exported types:
 
--   X
+-   `WebhookPayload`, the lemonsqueezy json body of a webhook
+-   `Order`, the `payload.data` type for the events `order_created`, `order_updated`, `order_deleted`
+-   `Subscription`, the `payload.data` type for the events `subscription_created`, `subscription_cancelled`, `subscription_resumed`, `subscription_expired`, `subscription_paused`, `subscription_unpaused`
+-   `SubscriptionInvoice`, the `payload.data` type for the events `subscription_payment_success`, `subscription_payment_failed`, `subscription_payment_recovered`
+-   `LicenseKey`, the `payload.data` type for the events `license_key_created`
 
 Exported functions
 
--   `nodejsWebHookHandler`, it handles webhooks signature check and parsing
+-   `nodejsWebHookHandler`, it handles webhooks signature check and parsing. It also adds a top level `event_name` field to the payload to make [Typescript discriminated unions](https://www.typescriptlang.org/docs/handbook/unions-and-intersections.html#discriminating-unions) work and infer the payload.data type under if blocks inside `onData`.
 
 ## Usage in Node.js
 
@@ -25,6 +29,7 @@ app.post('/webhooks', async (req, res) => {
     await nodejsWebHookHandler({
         onData(payload) {
             console.log(payload)
+            // payload.event_name allows TypeScript to infer the type of payload.data
             if (payload.event_name === 'order_created') {
                 // payload.data is an Order
                 console.log(payload.data.attributes.status)

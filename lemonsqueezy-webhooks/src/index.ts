@@ -2,7 +2,7 @@ export * from './types'
 import crypto from 'crypto'
 import { Readable } from 'stream'
 import { IncomingMessage, OutgoingMessage, ServerResponse } from 'http'
-import { DiscriminatedHookData, HookData } from './types'
+import { DiscriminatedWebhookPayload, WebhookPayload } from './types'
 
 async function buffer(readable: Readable) {
     const chunks: any[] = []
@@ -20,7 +20,7 @@ export async function nodejsWebHookHandler({
 }: {
     secret: string
     req: IncomingMessage
-    onData: (data: DiscriminatedHookData) => any
+    onData: (data: DiscriminatedWebhookPayload) => any
     res: ServerResponse
 }) {
     const signingSecret = secret
@@ -51,7 +51,7 @@ export async function nodejsWebHookHandler({
                 .end(JSON.stringify({ message: 'Invalid signature.' }))
         }
 
-        const payload: HookData = JSON.parse(rawBody)
+        const payload: WebhookPayload = JSON.parse(rawBody)
 
         const eventName = payload.meta.event_name
         const customData = payload.meta.custom_data
