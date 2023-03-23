@@ -1,3 +1,64 @@
+type SubscriptionEventNames =
+    | 'subscription_created'
+    | 'subscription_cancelled'
+    | 'subscription_resumed'
+    | 'subscription_expired'
+    | 'subscription_paused'
+    | 'subscription_unpaused'
+
+type SubscriptionInvoiceEventNames =
+    | 'subscription_payment_success'
+    | 'subscription_payment_failed'
+    | 'subscription_payment_recovered'
+
+type OrderEventNames = 'order_created' | 'order_refunded'
+
+type LicenseKeyEventNames = 'license_key_created'
+
+export type HookData<CustomData = any> = {
+    meta: {
+        event_name:
+            | SubscriptionEventNames
+            | SubscriptionInvoiceEventNames
+            | OrderEventNames
+            | LicenseKeyEventNames
+        custom_data: CustomData
+    }
+    data: Subscription | SubscriptionInvoice | Order | LicenseKey
+}
+
+// augmented type to make Typescript discriminated unions work: https://www.typescriptlang.org/docs/handbook/unions-and-intersections.html#discriminating-unions
+export type DiscriminatedHookData<CustomData = any> =
+    | {
+          event_name: SubscriptionEventNames
+          meta: {
+              event_name: SubscriptionEventNames
+
+              custom_data: CustomData
+          }
+          data: Subscription
+      }
+    | {
+          event_name: SubscriptionInvoiceEventNames
+          meta: {
+              event_name: SubscriptionInvoiceEventNames
+              custom_data: CustomData
+          }
+          data: SubscriptionInvoice
+      }
+    | {
+          event_name: OrderEventNames
+          meta: { event_name: OrderEventNames; custom_data: CustomData }
+          data: Order
+      }
+    | {
+          event_name: LicenseKeyEventNames
+          meta: { event_name: LicenseKeyEventNames; custom_data: CustomData }
+          data: LicenseKey
+      }
+
+export type EventName = HookData['meta']['event_name']
+
 export type SubscriptionInvoice = {
     type: 'subscription-invoices'
     id: string

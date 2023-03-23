@@ -29,7 +29,10 @@ importers:
       typescript: 5.0.2
 
   lemonsqueezy-webhooks:
-    specifiers: {}
+    specifiers:
+      '@types/node': 18.15.5
+    devDependencies:
+      '@types/node': 18.15.5
 
 packages:
 
@@ -162,7 +165,6 @@ packages:
 
   /@types/node/18.15.5:
     resolution: {integrity: sha512-Ark2WDjjZO7GmvsyFFf81MXuGTA/d6oP38anyxWOL6EREyBKAxKoFHwBhaZxCfLRLpO8JgVXwqOwSwa7jRcjew==}
-    dev: false
 
   /@types/prop-types/15.7.5:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
