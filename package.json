@@ -1,0 +1,9 @@
+{
+    "name": "root",
+    "scripts": {
+        "build": "pnpm run --filter lemonsqueezy-webhooks build"
+    },
+    "dependencies": {
+        "typescript": "5.0.2"
+    }
+}

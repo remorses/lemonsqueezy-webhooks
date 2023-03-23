@@ -1,0 +1,23 @@
+{
+    "name": "lemonsqueezy-webhooks",
+    "version": "0.0.0",
+    "description": "",
+    "main": "dist/index.js",
+    "module": "esm/index.js",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "build": "FORCE_COLOR=1 tsc && tsc -m es6 --outDir esm",
+        "watch": "tsc -w"
+    },
+    "files": [
+        "dist",
+        "src",
+        "esm"
+    ],
+    "keywords": [],
+    "author": "Tommaso De Rossi, morse <beats.by.morse@gmail.com>",
+    "license": "ISC",
+    "devDependencies": {},
+    "dependencies": {},
+    "peerDependencies": {}
+}
