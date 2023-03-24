@@ -20,6 +20,10 @@
         "lemonsqueezy",
         "webhooks"
     ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/remorses/lemonsqueezy-webhooks"
+    },
     "author": "Tommaso De Rossi, morse <beats.by.morse@gmail.com>",
     "license": "MIT",
     "devDependencies": {
