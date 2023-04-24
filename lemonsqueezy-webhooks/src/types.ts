@@ -2,6 +2,7 @@ type SubscriptionEventNames =
     | 'subscription_created'
     | 'subscription_cancelled'
     | 'subscription_resumed'
+    | 'subscription_updated'
     | 'subscription_expired'
     | 'subscription_paused'
     | 'subscription_unpaused'
