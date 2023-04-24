@@ -8,6 +8,12 @@ npm i lemonsqueezy-webhooks
 
 This package exposes the lemon-squeezy webhooks types and an utility functions to handle webhooks in Node.js
 
+### `nodejsWebHookHandler`
+
+Checks the signature of the request body and parses it to a `WebhookPayload` type.
+
+It also adds a top level `event_name` field to make [Typescript discriminated unions](https://www.typescriptlang.org/docs/handbook/unions-and-intersections.html#discriminating-unions) work inside `onData`.
+
 ## Usage in Node.js
 
 ```ts
