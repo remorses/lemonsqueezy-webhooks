@@ -105,3 +105,13 @@ Exported types:
 Exported functions
 
 -   `nodejsWebHookHandler`, it handles webhooks signature check and parsing. It also adds a top level `event_name` field to the payload to make [Typescript discriminated unions](https://www.typescriptlang.org/docs/handbook/unions-and-intersections.html#discriminating-unions) work and infer the payload.data type under if blocks inside `onData`.
+
+## Sponsors
+
+[**Notaku**](https://notaku.so)
+
+[![Notaku](https://notaku.so/github_banner.jpg)](https://notaku.so)
+
+---
+
+[Licensed under MIT]().
