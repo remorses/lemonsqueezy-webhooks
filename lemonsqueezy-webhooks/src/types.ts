@@ -119,6 +119,7 @@ export type Subscription = {
     attributes: {
         store_id: number
         order_id: number
+        customer_id: number
         order_item_id: number
         product_id: number
         variant_id: number
