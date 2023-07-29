@@ -23,7 +23,7 @@ export type WebhookPayload<CustomData = any> = {
             | SubscriptionInvoiceEventNames
             | OrderEventNames
             | LicenseKeyEventNames
-        custom_data: CustomData
+        custom_data?: CustomData
     }
     data: Subscription | SubscriptionInvoice | Order | LicenseKey
 }
