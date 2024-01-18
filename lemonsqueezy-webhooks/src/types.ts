@@ -153,6 +153,7 @@ export type Order = {
     attributes: {
         store_id: number
         identifier: string
+        customer_id: number        
         order_number: number
         user_name: string
         user_email: string
