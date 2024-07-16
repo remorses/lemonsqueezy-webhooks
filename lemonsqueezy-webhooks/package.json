@@ -1,6 +1,6 @@
 {
     "name": "lemonsqueezy-webhooks",
-    "version": "0.0.6",
+    "version": "0.1.0",
     "description": "lemon-squeezy webhooks types and an utility functions to handle webhooks in Node.js",
     "main": "dist/index.js",
     "module": "esm/index.js",
