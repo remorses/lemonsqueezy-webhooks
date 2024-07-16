@@ -1,12 +1,13 @@
 {
     "name": "lemonsqueezy-webhooks",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "lemon-squeezy webhooks types and an utility functions to handle webhooks in Node.js",
     "main": "dist/index.js",
     "module": "esm/index.js",
     "types": "dist/index.d.ts",
     "scripts": {
         "build": "FORCE_COLOR=1 tsc && tsc -m es6 --outDir esm && cp ../README.md ./README.md",
+        "prepublishOnly": "pnpm build",
         "watch": "tsc -w"
     },
     "files": [
