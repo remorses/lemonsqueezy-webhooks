@@ -53,7 +53,7 @@ export async function nodejsWebHookHandler<CustomData = any>({
     res.end(await response.text())
 }
 
-async function whatwgWebhooksHandler<CustomData = any>({
+export async function whatwgWebhooksHandler<CustomData = any>({
     secret,
     request,
     onData,
