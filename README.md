@@ -81,6 +81,36 @@ export default async function handler(
 }
 ```
 
+## Usage in Next.js (with Web Streams)
+
+You can also use the `whatwgWebhooksHandler` function to handle webhooks in Next.js routes that export a `POST` and `GET` handler.
+
+```ts
+// api/webhook.ts
+
+import { whatwgWebhooksHandler } from 'lemonsqueezy-webhooks'
+
+const secret = process.env.SECRET
+
+if (!secret) {
+    throw new Error('SECRET is not set')
+}
+
+export const POST = (request: Request) => {
+    return whatwgWebhooksHandler({
+        async onData(payload) {
+            console.log(payload)
+            if (payload.event_name === 'order_created') {
+                // payload.data is an Order
+                console.log(payload.data.attributes.status)
+            }
+        },
+        request,
+        secret,
+    })
+}
+```
+
 Exported types:
 
 -   `WebhookPayload`, the lemonsqueezy json body of a webhook

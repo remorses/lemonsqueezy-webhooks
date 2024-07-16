@@ -1,5 +1,5 @@
 import type { NextApiResponse, NextApiRequest } from 'next'
-import { nodejsWebHookHandler } from 'lemonsqueezy-webhooks'
+import { nodejsWebHookHandler } from 'lemonsqueezy-webhooks/'
 
 export const config = {
     api: {

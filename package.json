@@ -6,5 +6,9 @@
     },
     "dependencies": {
         "typescript": "5.0.2"
+    },
+    "devDependencies": {
+        "vite": "^5.3.4",
+        "vitest": "^2.0.3"
     }
 }
