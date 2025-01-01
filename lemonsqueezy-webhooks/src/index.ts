@@ -106,8 +106,12 @@ export async function whatwgWebhooksHandler<CustomData = any>({
         const eventName = payload.meta.event_name
         const customData = payload.meta.custom_data
 
-        await onData({ event_name: eventName, ...payload } as any)
-        return new Response(JSON.stringify({ message: 'Webhook received' }), {
+        const result = await onData({ event_name: eventName, ...payload } as any)
+        const responseBody: { message: string; result?: any } = { message: 'Webhook received' }
+        if (result !== undefined) {
+            responseBody.result = result
+        }
+        return new Response(JSON.stringify(responseBody), {
             status: 200,
             headers: { 'Content-Type': 'application/json' },
         })
