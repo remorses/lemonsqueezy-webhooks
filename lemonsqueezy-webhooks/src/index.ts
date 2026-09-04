@@ -90,7 +90,11 @@ export async function whatwgWebhooksHandler<CustomData = any>({
             'utf8',
         )
 
-        if (!crypto.timingSafeEqual(digest, signature)) {
+        // timingSafeEqual throws on length mismatch, which used to fall through as 400
+        if (
+            digest.length !== signature.length ||
+            !crypto.timingSafeEqual(digest, signature)
+        ) {
             await onError(new Error('Invalid lemonsqueezy signature.'))
             return new Response(
                 JSON.stringify({ message: 'Invalid signature.' }),
@@ -117,13 +121,10 @@ export async function whatwgWebhooksHandler<CustomData = any>({
         })
     } catch (e: any) {
         await onError(e)
-        return new Response(
-            JSON.stringify({ message: `Webhook error: ${e}` }),
-            {
-                status: 400,
-                headers: { 'Content-Type': 'application/json' },
-            },
-        )
+        return new Response(JSON.stringify({ message: 'Webhook error' }), {
+            status: 400,
+            headers: { 'Content-Type': 'application/json' },
+        })
     }
 }
 
